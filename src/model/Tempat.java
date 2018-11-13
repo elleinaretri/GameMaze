@@ -13,42 +13,110 @@ import java.util.ArrayList;
  * @author ASUS
  */
 public class Tempat {
-    private int tinggi;
-    private int lebar;
-    private ArrayList<Sel> isiTempat = new ArrayList<Sel>();
+    private int tinggi; // tinggi tempat Game
+    private int lebar;  // lebar tempat Game
+    private ArrayList<Sel> daftarSel; // daftar sel
 
-    public void bacaConfigurasi(File file) {
-
+    private String isi; // isi file konfigurasi
+    
+    public static int batasKanan;
+    public static int batasBawah;
+    
+    public Tempat() {
+        daftarSel = new ArrayList<Sel>();
+    }
+    
+    
+    
+    /**
+     * Fungsi pembaca file konfigurasi.
+     * Hasil pembacaan file akan disimpan di atribut 'isi' dan juga di atribut daftarSel
+     * @param file 
+     */
+    public void bacaKonfigurasi(File file){
+        
+    }
+    /**
+     * Fungsi penambah daftar sel.
+     * @param sel 
+     */
+    public void tambahSel(Sel sel){
+        daftarSel.add(sel);
     }
 
-    public void simpanConfigurasi(File file) {
-
+    /**
+     * @return the tinggi
+     */
+    public int getTinggi() {
+        return tinggi;
     }
 
-    private Sel cariPemain() {
-        for (int i = 0; i < isiTempat.size(); i++) {
-            if (isiTempat.get(i).isPemain()) {
-                return isiTempat.get(i);
-            }
-        }
-        return null;
+    /**
+     * @param tinggi the tinggi to set
+     */
+    public void setTinggi(int tinggi) {
+        this.tinggi = tinggi;
     }
 
-    public void up(int langkah) {
-
+    /**
+     * @return the lebar
+     */
+    public int getLebar() {
+        return lebar;
     }
 
-    public void down(int langkah) {
-
+    /**
+     * @param lebar the lebar to set
+     */
+    public void setLebar(int lebar) {
+        this.lebar = lebar;
     }
 
-    public void left(int langkah) {
-
+    /**
+     * @return the daftarSel
+     */
+    public ArrayList<Sel> getDaftarSel() {
+        return daftarSel;
     }
 
-    public void right(int langkah) {
-
+    /**
+     * @param daftarSel the daftarSel to set
+     */
+    public void setDaftarSel(ArrayList<Sel> daftarSel) {
+        this.daftarSel = daftarSel;
     }
+
+    /**
+     * @return the isi
+     */
+    public String getIsi() {
+        return isi;
+    }
+
+    /**
+     * @param isi the isi to set
+     */
+    public void setIsi(String isi) {
+        this.isi = isi;
+    }
+
+    public static void setBatasKanan(int batasKanan) {
+        Tempat.batasKanan = batasKanan;
+    }
+
+    public static void setBatasBawah(int batasBawah) {
+        Tempat.batasBawah = batasBawah;
+    }
+
+    public static int getBatasKanan() {
+        return batasKanan;
+    }
+
+    public static int getBatasBawah() {
+        return batasBawah;
+    }
+    
 }
+
 
 

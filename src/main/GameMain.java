@@ -3,19 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test;
+package main;
 
-import java.io.File;
-import model.Tempat2;
+import view.GameFrame;
+import view.TempatPanel;
 
 /**
  *
- * @author ASUS
+ * @author user only
  */
-public class TestTempat69 {
+public class GameMain {
     public static void main(String[] args) {
-        Tempat2 test = new Tempat2();
-        test.bacaKonfigurasi(new File("tempat2.txt"));
-        System.out.println(test.getIsi());
-}
+        GameFrame game = new GameFrame("My Game");
+    }
 }
