@@ -99,6 +99,16 @@ public class GameFrame extends JFrame {
         this.pindahKiriButton = new JButton("Kiri");
         southPanel.add(pindahKiriButton);
         
+        pindahKiriButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                pindahKiri();
+            }
+            
+        });
+        
+        
+        
         this.tambahButton = new JButton("tambahBola");
         southPanel.add(tambahButton);
         tambahButton.addActionListener(new ActionListener() {
@@ -157,6 +167,13 @@ public class GameFrame extends JFrame {
         }
         // gambar ulang tempat Panel
         getTempatPanel().repaint();
+    }
+    public void pindahKiri(){
+        for (int i = 0; i < getTempatPanel().getTempat().getDaftarSel().size(); i++) {
+            getTempatPanel().getTempat().getDaftarSel().get(i).geserKiri();
+            getTempatPanel().repaint();
+            
+        }
     }
 
     /**
