@@ -115,6 +115,10 @@ public class Tempat {
     public static int getBatasBawah() {
         return batasBawah;
     }
+
+    public void hapusSel() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
 

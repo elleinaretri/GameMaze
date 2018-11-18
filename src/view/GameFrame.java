@@ -6,6 +6,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -26,12 +27,15 @@ import model.Sel;
  * @author user only
  */
 public class GameFrame extends JFrame {
-    private TempatPanel tempatPanel;
+     private TempatPanel tempatPanel;
 
     private JLabel perintahlabel;
     private JTextField perintahText;
-    private JButton okButton;
-
+    private JButton pindahKananButton;
+    private JButton pindahKiriButton;
+    private JButton tambahButton;
+    private JButton hapusButton;
+    
     private JMenuBar menuBar;
     private JMenu gameMenu;
     private JMenuItem exitMenuItem;
@@ -50,7 +54,7 @@ public class GameFrame extends JFrame {
 
     public void init() {
         // set ukuran dan layout
-        this.setSize(500, 300);
+        this.setSize(800, 500);
         this.setLayout(new BorderLayout());
 
         // set menu Bar
@@ -82,16 +86,37 @@ public class GameFrame extends JFrame {
         this.perintahText = new JTextField(20);
         southPanel.add(perintahText);
 
-        this.okButton = new JButton("OK");
-        southPanel.add(okButton);
-
-        okButton.addActionListener(new ActionListener() {
+        this.pindahKananButton = new JButton("Kanan");
+        southPanel.add(pindahKananButton);
+        
+        pindahKananButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pindahKanan();
             }
         });
-
+        
+        this.pindahKiriButton = new JButton("Kiri");
+        southPanel.add(pindahKiriButton);
+        
+        this.tambahButton = new JButton("tambahBola");
+        southPanel.add(tambahButton);
+        tambahButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tambahBola();
+                }
+        });
+        
+        this.hapusButton = new JButton("hapusBola");
+        southPanel.add(hapusButton);
+        
+        hapusButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                hapusBola();
+            }
+        });
         // set contentPane
         Container cp = this.getContentPane();
         if (tempatPanel != null) {
@@ -103,6 +128,23 @@ public class GameFrame extends JFrame {
         this.setVisible(true);
     }
 
+    /**
+     * Fungsi untuk tambahBola
+     */
+    public void tambahBola(){
+        tempatPanel.getTempat().tambahSel(new Sel(0,0,25,25,'#',Color.BLUE));
+        // gambar ulang tempat Panel
+        getTempatPanel().repaint();
+    }
+    
+    /**
+     * Fungsi hapus bola
+     */
+    public void hapusBola(){
+        tempatPanel.getTempat().hapusSel();
+        // gambar ulang tempat Panel
+        getTempatPanel().repaint();
+    }
     /**
      * Fungsi untuk memindahkan sel dan menggambar ulang
      */
