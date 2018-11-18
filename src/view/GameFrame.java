@@ -27,15 +27,16 @@ import model.Sel;
  * @author user only
  */
 public class GameFrame extends JFrame {
-     private TempatPanel tempatPanel;
+
+    private TempatPanel tempatPanel;
 
     private JLabel perintahlabel;
     private JTextField perintahText;
-    private JButton pindahKananButton;
-    private JButton pindahKiriButton;
+    private JButton pindahKananButton, pindahKiriButton, pindahAtasButton, pindahBawahButton;
+
     private JButton tambahButton;
     private JButton hapusButton;
-    
+
     private JMenuBar menuBar;
     private JMenu gameMenu;
     private JMenuItem exitMenuItem;
@@ -88,39 +89,55 @@ public class GameFrame extends JFrame {
 
         this.pindahKananButton = new JButton("Kanan");
         southPanel.add(pindahKananButton);
-        
+
         pindahKananButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pindahKanan();
             }
         });
-        
+
         this.pindahKiriButton = new JButton("Kiri");
         southPanel.add(pindahKiriButton);
-        
-        pindahKiriButton.addActionListener(new ActionListener(){
+
+        pindahKiriButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 pindahKiri();
             }
-            
+
         });
-        
-        
-        
+        this.pindahAtasButton = new JButton("atas");
+        southPanel.add(pindahAtasButton);
+        pindahAtasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                pindahAtas();
+            }
+
+        });
+        this.pindahBawahButton = new JButton("bawah");
+        southPanel.add(pindahBawahButton);
+        pindahBawahButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                pindahBawah();
+            }
+
+        });
+
         this.tambahButton = new JButton("tambahBola");
         southPanel.add(tambahButton);
         tambahButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 tambahBola();
-                }
+            }
         });
-        
+
         this.hapusButton = new JButton("hapusBola");
         southPanel.add(hapusButton);
-        
+
         hapusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -141,20 +158,21 @@ public class GameFrame extends JFrame {
     /**
      * Fungsi untuk tambahBola
      */
-    public void tambahBola(){
-        tempatPanel.getTempat().tambahSel(new Sel(0,0,25,25,'#',Color.BLUE));
+    public void tambahBola() {
+        tempatPanel.getTempat().tambahSel(new Sel(0, 0, 25, 25, '#', Color.BLUE));
         // gambar ulang tempat Panel
         getTempatPanel().repaint();
     }
-    
+
     /**
      * Fungsi hapus bola
      */
-    public void hapusBola(){
+    public void hapusBola() {
         tempatPanel.getTempat().hapusSel();
         // gambar ulang tempat Panel
         getTempatPanel().repaint();
     }
+
     /**
      * Fungsi untuk memindahkan sel dan menggambar ulang
      */
@@ -168,17 +186,29 @@ public class GameFrame extends JFrame {
         // gambar ulang tempat Panel
         getTempatPanel().repaint();
     }
-    public void pindahKiri(){
+
+    public void pindahKiri() {
         for (int i = 0; i < getTempatPanel().getTempat().getDaftarSel().size(); i++) {
             getTempatPanel().getTempat().getDaftarSel().get(i).geserKiri();
-            getTempatPanel().repaint();
-            
+
         }
+        getTempatPanel().repaint();
     }
 
-    /**
-     * @return the tempatPanel
-     */
+    public void pindahAtas() {
+        for (int i = 0; i < getTempatPanel().getTempat().getDaftarSel().size(); i++) {
+            getTempatPanel().getTempat().getDaftarSel().get(i).geserAtas();
+        }
+        getTempatPanel().repaint();
+    }
+
+    public void pindahBawah() {
+        for (int i = 0; i < getTempatPanel().getTempat().getDaftarSel().size(); i++) {
+            getTempatPanel().getTempat().getDaftarSel().get(i).geserBawah();
+        }
+        getTempatPanel().repaint();
+    }
+
     public TempatPanel getTempatPanel() {
         return tempatPanel;
     }

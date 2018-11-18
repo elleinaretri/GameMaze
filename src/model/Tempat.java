@@ -5,12 +5,13 @@
  */
 package model;
 
+import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 
 /**
  *
- * @author ASUS
+ * @author user only
  */
 public class Tempat {
     private int tinggi; // tinggi tempat Game
@@ -25,7 +26,6 @@ public class Tempat {
     public Tempat() {
         daftarSel = new ArrayList<Sel>();
     }
-    
     
     
     /**
@@ -44,6 +44,15 @@ public class Tempat {
         daftarSel.add(sel);
     }
 
+    /**
+     * Fungsi hapus sel.
+     * Sel yang paling akhir diremove dari daftar sel.
+     */
+    public void hapusSel(){
+        if(!daftarSel.isEmpty()){
+            daftarSel.remove(0);
+        }
+    }
     /**
      * @return the tinggi
      */
@@ -99,28 +108,4 @@ public class Tempat {
     public void setIsi(String isi) {
         this.isi = isi;
     }
-
-    public static void setBatasKanan(int batasKanan) {
-        Tempat.batasKanan = batasKanan;
-    }
-
-    public static void setBatasBawah(int batasBawah) {
-        Tempat.batasBawah = batasBawah;
-    }
-
-    public static int getBatasKanan() {
-        return batasKanan;
-    }
-
-    public static int getBatasBawah() {
-        return batasBawah;
-    }
-
-    public void hapusSel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }
-
-
-
